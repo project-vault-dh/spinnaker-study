@@ -20,7 +20,7 @@ spec:
                 source: demo
         spec:
             containers:
-                -   image: 702037529261.dkr.ecr.us-west-2.amazonaws.com/demo-spinnaker-pipeline
+                -   image: 702037529261.dkr.ecr.us-west-2.amazonaws.com/fast-wit-microservice
                     name: fast-wit-microservice
                     ports:
                         -   name: web
