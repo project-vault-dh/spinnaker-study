@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: mild-temper-microservice
+        app: fast-wit-microservice
         stack: frontend
         source: demo
-    name: mild-temper-microservice
+    name: fast-wit-microservice
     namespace: microservices
 spec:
     replicas: 3
     selector:
         matchLabels:
-            run: mild-temper-microservice
+            run: fast-wit-microservice
     template:
         metadata:
             labels:
-                app: mild-temper-microservice
-                run: mild-temper-microservice
+                app: fast-wit-microservice
+                run: fast-wit-microservice
                 source: demo
         spec:
             containers:
                 -   image: 702037529261.dkr.ecr.us-west-2.amazonaws.com/demo-spinnaker-pipeline
-                    name: mild-temper-microservice
+                    name: fast-wit-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,13 +31,13 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: mild-temper-microservice-service
-    name: mild-temper-microservice-service
+        app: fast-wit-microservice-service
+    name: fast-wit-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: mild-temper-microservice
+        app: fast-wit-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -51,15 +51,15 @@ kind: Ingress
 metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: mild-temper-ingress
+    name: fast-wit-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /mild-temper(/|$)(.*)
+                    -   path: /fast-wit(/|$)(.*)
                         backend:
-                            serviceName: mild-temper-microservice-service
+                            serviceName: fast-wit-microservice-service
                             servicePort: 30201
 
 
